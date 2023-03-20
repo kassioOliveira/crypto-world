@@ -13,11 +13,11 @@ export const AppRoutes = () => {
         setMenuOptions([
             {
                 titulo: "Cryptos",
-                link: ""
+                link: "/crypto-world"
             },
             {
                 titulo: "Exchanges",
-                link: ""
+                link: "/crypto-world-2"
             },
             {
                 titulo: "Trades",
@@ -30,6 +30,7 @@ export const AppRoutes = () => {
         <Routes>
             <Route path='/crypto-world' element={<Dashboard />} />
 
+            <Route path='/crypto-world-2' element={<Dashboard />} />
             <Route path='*' element={<Navigate to='crypto-world' />} />
         </Routes>
     );

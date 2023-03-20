@@ -5,3 +5,8 @@ export const LayoutBaseComponent = styled.div`
     width: 100vw;
     background-color:#eceff1;
 `;
+
+export const MainComponenet = styled.main`
+    width: 100%;
+    height: calc(100% - 70px);
+`;
