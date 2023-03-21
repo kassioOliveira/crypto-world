@@ -7,8 +7,8 @@ import { useAppMenuContext } from '../shared/contexts/MenuContext';
 
 export const AppRoutes = () => {
 
-    const { menuOptions, setMenuOptions } = useAppMenuContext();
-    console.log(menuOptions);
+    const { setMenuOptions } = useAppMenuContext();
+
     useEffect(() => {
         setMenuOptions([
             {
