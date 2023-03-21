@@ -10,8 +10,9 @@ export const GeralMarketBox = styled.div`
     grid-template-columns: repeat(3,150px);
     grid-template-columns: repeat(3,150px);
     position: absolute;
-    top: 10%;
+    top: 5%;
 `;
+
 
 
 

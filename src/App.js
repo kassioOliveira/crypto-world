@@ -4,6 +4,7 @@ import { AppRoutes } from "./routes"
 import GlobalStyled from "./globalStyle";
 import { AppMenuContextProvider } from "./shared/contexts/MenuContext";
 
+
 export const App = () => {
   return (
     <>

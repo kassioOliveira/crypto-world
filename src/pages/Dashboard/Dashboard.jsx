@@ -3,6 +3,7 @@ import { GeralMarket } from '../../shared/components/MarketInfo/GeralMarket/Gera
 import { LayoutBase } from '../../shared/layouts/LayoutBase/Layout'
 
 export const Dashboard = () => {
+
   return (
     <LayoutBase>
       <GeralMarket>
