@@ -7,10 +7,10 @@ import { useAppMenuContext } from '../shared/contexts/MenuContext';
 
 export const AppRoutes = () => {
 
-    const { setMenuOptions } = useAppMenuContext();
+    const { handleMenuOptions } = useAppMenuContext();
 
     useEffect(() => {
-        setMenuOptions([
+        handleMenuOptions([
             {
                 titulo: "Cryptos",
                 link: "/crypto-world"

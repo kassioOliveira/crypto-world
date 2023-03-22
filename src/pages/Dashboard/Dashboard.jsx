@@ -6,13 +6,7 @@ import { MarketService } from '../../shared/services/api/markets/MarketsService'
 
 export const Dashboard = () => {
 
-  useEffect(() => {
-
-    MarketService.getAll()
-    .then(response => console.log(response))
-    .catch(error => console.log(error))
-
-  },[]);
+  console.log('ola')
 
   return (
     <LayoutBase>
