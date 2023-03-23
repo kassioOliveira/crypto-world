@@ -50,7 +50,12 @@ export const NavItem = styled(Link)`
 
 export const IconBar = styled(FaBars)`
    display: none;
+   cursor: pointer;
    @media (max-width: 768px) {
     display: initial;
   }
 `;
+
+export const IconContainer = styled.div`
+  
+`

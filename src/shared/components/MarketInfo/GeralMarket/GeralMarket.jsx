@@ -6,7 +6,7 @@ import { AssetsService } from '../../../services/api/assets/AssetsService';
 import { ExchangesService } from '../../../services/api/exchanges/ExchangesService';
 import { MarketService } from '../../../services/api/markets/MarketsService';
 
-import { MarketContainer, MarketDataBox, MarketDataValue, MarketSubHeader, RankContainer } from '../../../styles/StylesComponents'
+import { MarketContainer, MarketDataBox, MarketDataValue, MarketSubHeader} from '../../../styles/StylesComponents'
 
 import { GeralMarketBox, GeralMarketHeader, IconArrownDown, IconArrownUp, MarketHeaderTitle } from './GeralMarketStyle';
 
@@ -97,14 +97,14 @@ export const GeralMarket = () => {
                 <MarketDataBox>
                     <MarketSubHeader>Valor de mercado</MarketSubHeader>
                     <MarketDataValue>
-                        ${assets.length && (marketCapValue(assets))}
+                        ${assets?.length && (marketCapValue(assets))}
                     </MarketDataValue>
                 </MarketDataBox>
 
                 <MarketDataBox>
                     <MarketSubHeader>Transacionado</MarketSubHeader>
                     <MarketDataValue>
-                        ${assets.length && (exChangeVolume(assets))}
+                        ${assets?.length && (exChangeVolume(assets))}
                     </MarketDataValue>
                 </MarketDataBox>
 
@@ -123,7 +123,7 @@ export const GeralMarket = () => {
                 </MarketDataBox>
 
                 <MarketDataBox>
-                    <MarketSubHeader>Assets</MarketSubHeader>
+                    <MarketSubHeader>Ativos</MarketSubHeader>
                     <MarketDataValue>
                         {assets?.length}
                     </MarketDataValue>
@@ -132,7 +132,7 @@ export const GeralMarket = () => {
                 <MarketDataBox>
                     <MarketSubHeader>BTC Dom Index</MarketSubHeader>
                     <MarketDataValue>
-                        {market.length && (formatPercentage(market[0]))}
+                        {market?.length && (formatPercentage(market[0]))}
                     </MarketDataValue>
                 </MarketDataBox>
 

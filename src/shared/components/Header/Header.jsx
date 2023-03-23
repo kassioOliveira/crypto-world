@@ -1,11 +1,11 @@
 import React from 'react'
 import { useAppMenuContext } from '../../contexts/MenuContext'
 import { Search } from '../Search/Search';
-import { HeaderComponent, IconBar, NavComponent, NavItem, Logo } from './HeaderStyle'
+import { HeaderComponent, IconBar, NavComponent, NavItem, Logo, IconContainer } from './HeaderStyle'
 
 export const Header = () => {
 
-    const {menuOptions} = useAppMenuContext();
+    const {menuOptions, handleMenuIsOpen,barRef} = useAppMenuContext();
 
   return (
     <HeaderComponent>
@@ -24,7 +24,9 @@ export const Header = () => {
     
         </NavComponent>
         <Search/>
+            <IconContainer ref={barRef} onClick={handleMenuIsOpen}>
             <IconBar/>
+            </IconContainer>
 
     </HeaderComponent>
   )
