@@ -5,7 +5,7 @@ export const MarketContainer = styled.section`
     position: relative;
     width: 100%;
     height: 300px;
-    background-color:#34bad5 ;
+    background-image: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
     display: flex;
     align-items: center;
     justify-content: center;

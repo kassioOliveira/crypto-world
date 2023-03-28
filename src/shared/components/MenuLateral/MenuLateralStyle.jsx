@@ -22,14 +22,15 @@ export const MenuContainer = styled.div`
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     overflow: hidden;
+    
   }
 
   @media (max-width:500px){
-    width: 40%;
+    width: ${({isOpen}) => isOpen? "40%": "0"} ;
   }
 
   @media (max-width:300px){
-    width: 50%;
+    width: ${({isOpen}) => isOpen? "50%": "0"} ;
   }
 
 `;

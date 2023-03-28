@@ -2,10 +2,10 @@ import { Api } from "../axios-config";
 
 
 
-const getAll = async (limit=2000) => {
+const getAll = async (offset=0 , limit=2000) => {
 
     try {
-        const {data} = await Api.get(`/assets?limit=${limit}`);
+        const {data} = await Api.get(`/assets?offset=${offset}&limit=${limit}`);
 
         if(data){
             return data;
