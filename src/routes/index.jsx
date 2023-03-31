@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Dashboard } from '../pages/Dashboard/Dashboard';
+import { Exchanges } from '../pages/Exchanges/Exchanges';
 import { Home } from '../pages/Home/Home';
 import { MenuLateral } from '../shared/components/MenuLateral/MenuLateral';
 
@@ -15,15 +16,15 @@ export const AppRoutes = () => {
         handleMenuOptions([
             {
                 titulo: "Cryptos",
-                link: "/crypto-world"
+                link: "/"
             },
             {
-                titulo: "Exchanges",
-                link: "/crypto-world-2"
+                titulo: "Corretoras",
+                link: "/corretoras"
             },
             {
-                titulo: "Graphics",
-                link: ""
+                titulo: "Dashboard",
+                link: "/dashboard"
             },
         ]);
     }, [handleMenuOptions]);
@@ -32,10 +33,12 @@ export const AppRoutes = () => {
         <>
         <MenuLateral/>
            <Routes>
-            <Route path='/crypto-world' element={<Home/>} />
+            <Route path='/' element={<Home/>} />
 
-            <Route path='/crypto-world-2' element={<Dashboard />} />
-            <Route path='*' element={<Navigate to='crypto-world' />} />
+            <Route path='/corretoras' element={<Exchanges />} />
+
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='*' element={<Navigate to='/' />} />
         </Routes>
         </>
 
