@@ -32,7 +32,7 @@ export const Home = () => {
     <LayoutBase>
         <GeralMarket/>
         {assets && (
-        <Table isCurrency  data={assets}
+        <Table isAssets showPagination  data={assets}
           columnsTitles={titles}
           columnsNotToRemoveWhenResizing={titleColumnsRemoveResizing}
           handlePageClick={handlePageClick} totalRecords={2000} recordsPerPage={20} />
