@@ -8,22 +8,22 @@ export const Home = () => {
 
     const [assets, setAssets] = useState([]);
 
-    const titles = [{ title: "Rank", w: false, }, { title: "Nome", w: "150px" }, { title: "Preço", w: false }
-    , { title: "Valor de mercado", w: false }, { title: "Volume (24h)", w: false }, { title: "Alteração (24h)", w: false }];
+    const titles = [{ title: "Rank", w: false, }, { title: "Nome", w: "150px" }, { title: "Preço US", w: false }
+    , { title: "Capitalização de mercado", w: false }, { title: "Volume (24h)", w: false }, { title: "Alteração (24h)", w: false }];
 
-  const titleColumnsRemoveResizing = ["Rank", "Volume (24h)", "Valor de mercado"];
+  const titleColumnsRemoveResizing = ["Rank", "Volume (24h)", "Capitalização de mercado"];
 
 
     useEffect(()=>{
         AssetsService.getAll(0, 20).then(res => setAssets(res.data))
-        .catch(err => console.log(err))
+        .catch(err => alert(err.message))
     },[]);
 
     const handlePageClick = (e) => {
         const offset = (e.selected * 20);
     
         AssetsService.getAll(offset, 20).then(res => setAssets(res.data))
-          .catch(err => console.log(err))
+          .catch(err => alert(err.message))
       }
     
     

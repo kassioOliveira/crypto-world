@@ -15,7 +15,7 @@ export const Exchanges = () => {
 
     useEffect(() => {
         ExchangesService.getAll().then(res => setExchanges(res.data))
-            .catch(err => console.log(err))
+            .catch(err => alert(err.message))
     }, []);
     
     return (

@@ -11,7 +11,7 @@ export const TopMarket = ({data}) => {
         <Top5Container>
             {
                 data && (
-                    data?.map((item,index) => (<LogoTop5 key={index} src={`https://assets.coincap.io/assets/icons/${item.baseSymbol.toLowerCase()}@2x.png`}/>))
+                    data?.map((item,index) => (<LogoTop5 key={index} src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`}/>))
                 )
             }
 

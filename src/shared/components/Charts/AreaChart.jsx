@@ -1,12 +1,14 @@
 import React from "react";
 import Chart from "react-apexcharts";
 
+
 export const AreaChart = ({data}) => {
+
 
     const options = {
         series: data.map(item =>{ 
           return { name:item.name, data:item.prices }
-         }) ,
+         }),
         chart: {
         height: 350,
         type: 'area'

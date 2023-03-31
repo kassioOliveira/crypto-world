@@ -1,47 +1,44 @@
 import React, { useEffect, useState } from "react";
-import { GeralMarket } from "../../shared/components/MarketInfo/GeralMarket/GeralMarket";
+import { PainelGraficosContainer } from "../../shared/components/PainelGraficosContainer/PainelGraficosContainer";
 
-import Table, { } from "../../shared/components/Table/Table";
 import { LayoutBase } from "../../shared/layouts/LayoutBase/Layout";
 import { AssetsService } from "../../shared/services/api/assets/AssetsService";
+import { TopMarket } from "../../shared/components/MarketInfo/TopMaket/TopMarket";
 
 export const Dashboard = () => {
 
-  const [assets, setAssets] = useState([]);
 
-  const titles = [{ title: "Rank", w: false, }, { title: "Nome", w: "150px" }, { title: "Preço", w: false }
-    , { title: "Valor de mercado", w: false }, { title: "Volume (24h)", w: false }, { title: "Alteração (24h)", w: false }];
-
-  const titleColumnsRemoveResizing = ["Rank", "Volume (24h)", "Valor de mercado"];
-
+  const [topFive, setTopFive] = useState([]);
+  
 
   useEffect(() => {
 
-    AssetsService.getAll(0, 20).then(res => setAssets(res.data))
-      .catch(err => console.log(err))
 
-  }, [])
-
+    AssetsService.getAll(0, 5).then(res => setTopFive(res.data))
+      .catch(err => alert(err.message))
 
 
-  const handlePageClick = (e) => {
-    const offset = (e.selected * 20);
+  }, []);
 
-    AssetsService.getAll(offset, 20).then(res => setAssets(res.data))
-      .catch(err => console.log(err))
-  }
+
+
 
 
 
   return (
     <LayoutBase>
-      <GeralMarket />
-      {assets && (
-        <Table isCurrency  data={assets}
-          columnsTitles={titles}
-          columnsNotToRemoveWhenResizing={titleColumnsRemoveResizing}
-          handlePageClick={handlePageClick} totalRecords={2000} recordsPerPage={20} />
-      )}
+      {
+        topFive && (
+          <>
+
+            <TopMarket data={topFive} />
+            <PainelGraficosContainer />
+
+          </>
+        )
+      }
+
+     
     </LayoutBase>
   )
 }

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+
+
 import { Box, PainelContainer, SubBox } from './PainelGraficosContainerStyle';
 
 import { AssetsService } from '../../services/api/assets/AssetsService';
@@ -7,21 +9,22 @@ import { BarChart } from '../Charts/BarChart';
 import { RadialBarChart } from '../Charts/RadialBarChart';
 
 
+export const PainelGraficosContainer = () => {
 
-export const PainelGraficosContainer = ({}) => {
-
-    const [topFive,setTopFive] = useState([]);
+    
     const [data,Setdata] = useState([]);
+    const [topFive,setTopFive] = useState([])
+
 
 
     useEffect(() => {
 
          AssetsService.getAll(0,5).then( async(res)=> {
 
-          const dataResponse = res.data;
+          const dataResponse = res.data
  
-          const historyData = await  AssetsService.getTop5HistoryById(dataResponse[0].id,
-            dataResponse[1].id,dataResponse[2].id,dataResponse[3].id,dataResponse[4].id);
+          const historyData = await  AssetsService.getTop5HistoryById(dataResponse[0]?.id,
+            dataResponse[1]?.id,dataResponse[2]?.id,dataResponse[3]?.id,dataResponse[4]?.id);
 
          const formattedData = historyData.map((arr,index)=>{
 
@@ -34,21 +37,24 @@ export const PainelGraficosContainer = ({}) => {
           return {name:dataResponse[index].id,prices:prices,dates:dates};
          })
 
-         Setdata(formattedData)
-
          setTopFive(dataResponse);
+         Setdata(formattedData);
 
 
-         }).catch((error) => alert(error));
+
+         }).catch((error) => alert(error.message));
         
 
     },[]);
 
 
   return (
-    <PainelContainer>
+   <>
+   {
+    data && (
+      <PainelContainer>
       <Box>
-        <AreaChart data={data} />
+      <AreaChart data={data}/>
       </Box>
 
       <Box flex>
@@ -63,8 +69,11 @@ export const PainelGraficosContainer = ({}) => {
 
       </Box>
 
-      
-      
     </PainelContainer>
+    )
+   }
+
+
+   </>
   )
 }
