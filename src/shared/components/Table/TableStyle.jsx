@@ -4,6 +4,7 @@ import ReactPaginate from 'react-paginate';
 
 
 export const TH = styled.th`
+    font-weight:bold;
     text-align: ${({w})=> w?"left":'center'};
     width: ${({w})=> w?"170px":'initial'};
     margin-left:${({w})=> w?"10px":'initial'};
@@ -91,6 +92,7 @@ export const Logo = styled.img`
 
 export const LinkToDetails = styled(Link)`
    text-decoration:none;
+   font-weight:bold;
    color: black;
    width: 100%;
     height: 100%;

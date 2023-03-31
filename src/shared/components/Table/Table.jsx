@@ -3,15 +3,15 @@ import useWindowDimensions from "../../hooks/useWindowDimension";
 
 import { LinkToDetails, Logo, NavPagination, PaginationComponet, TableBody, TableContainer, TableFooter, TableRow, TD, TH, THead } from "./TableStyle";
 
-export default ({isCurrency,showPagination, data, columnsTitles,columnsNotToRemoveWhenResizing,
-   handlePageClick,totalRecords,recordsPerPage }) => (
+export default ({ isAssets, isExchanges, showPagination, data, columnsTitles, columnsNotToRemoveWhenResizing,
+  handlePageClick, totalRecords, recordsPerPage }) => (
 
-  <Table isCurrency={isCurrency} showPagination={showPagination} data={data} titles={columnsTitles}
-   titleToRemove={columnsNotToRemoveWhenResizing} handlePageClick={handlePageClick}
-   totalRecords={totalRecords}  recordsPerPage={recordsPerPage} />
+  <Table isAssets={isAssets} isExchanges={isExchanges} showPagination={showPagination} data={data} titles={columnsTitles}
+    titleToRemove={columnsNotToRemoveWhenResizing} handlePageClick={handlePageClick}
+    totalRecords={totalRecords} recordsPerPage={recordsPerPage} />
 );
 
-const Table = ({isCurrency, showPagination, data, titles,titleToRemove, handlePageClick,totalRecords,recordsPerPage }) => {
+const Table = ({ isAssets, isExchanges, showPagination, data, titles, titleToRemove, handlePageClick, totalRecords, recordsPerPage }) => {
 
 
   const nPages = Math.ceil(Number(totalRecords) / Number(recordsPerPage));
@@ -40,13 +40,14 @@ const Table = ({isCurrency, showPagination, data, titles,titleToRemove, handlePa
     return str.toString().charAt(0).toUpperCase() + str.substr(1);
   }
 
+
   return (
     <TableContainer cellSpacing={"0"} >
 
       <THead>
         <TableRow w>
           {width > 500 ? (titles?.map((item, index) => <TH w={item.w} key={index}>{item.title}</TH>)
-          ) : (titles?.filter((t)=> !titleToRemove.includes(t.title) ).map((item, index) => <TH w={item.w} key={index}>{item.title}</TH>))}
+          ) : (titles?.filter((t) => !titleToRemove.includes(t.title)).map((item, index) => <TH w={item.w} key={index}>{item.title}</TH>))}
         </TableRow>
       </THead>
       <TableBody>
@@ -60,20 +61,53 @@ const Table = ({isCurrency, showPagination, data, titles,titleToRemove, handlePa
 
                 <TD>
 
-                  <LinkToDetails to={`/details/${item.id}`}>
+                  {isAssets && !isExchanges && (
+                    <LinkToDetails to={`/details/${item.id}`}>
 
-                   {isCurrency && (
-                     <Logo src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`} />
-                   )}
-                    {formatString(item.id)}
 
-                  </LinkToDetails>
+                      <Logo src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`} />
+
+                      {formatString(item.id)}
+
+                    </LinkToDetails>
+                  )}
+
+                  {!isAssets && isExchanges && (
+                    <LinkToDetails to={`/exchanges/${item.name}/details`}>
+
+                      {formatString(item.name)}
+
+                    </LinkToDetails>
+                  )}
 
                 </TD>
-                <TD>{formatCash(Number(item.priceUsd))}</TD>
-                {width > 500 && (<TD>{formatCash(item.marketCapUsd)}</TD>)}
-                {width > 500 && (<TD >{formatCash(item.volumeUsd24Hr)}</TD>)}
-                <TD>{formatPercentage(Number(item.changePercent24Hr))}</TD>
+
+
+                
+                <TD>{
+
+                  isAssets && !isExchanges ? 
+                  formatCash(Number(item.priceUsd))
+                   :
+                    (item.tradingPairs)
+                }
+                </TD>
+                {width > 500 && !isExchanges && (<TD>{formatCash(item.marketCapUsd)}</TD>)}
+                
+                {width > 500 && (<TD >{
+                 isAssets && !isExchanges? formatCash(item.volumeUsd24Hr)
+                 : formatCash(item.volumeUsd)
+                
+                }</TD>)}
+
+                <TD>{
+                isAssets && !isExchanges?
+                formatPercentage(Number(item.changePercent24Hr))
+                : formatPercentage(Number(item.percentTotalVolume))
+              
+              }</TD>
+                
+
 
               </TableRow>
 
