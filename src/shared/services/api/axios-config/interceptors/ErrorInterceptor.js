@@ -10,5 +10,9 @@ export const errorInterceptor = (error) => {
         return Promise.reject(new Error("Requisição não autorizada."))
     }
 
+    if(error.response?.status === 404){
+        return Promise.reject(new Error("Não encontrado."))
+    }
+
     return Promise.reject(error);
 };

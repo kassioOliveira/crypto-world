@@ -79,16 +79,6 @@ const getTop5HistoryById = async (id1,id2,id3,id4,id5, historyDate = 'h1') => {
             })
 
 
-        // .then(axios.spread((data1,data2,data3,data4,data5)=> {
-
-        //     if(data){
-        //         return data;
-        //     }
-
-        //     return new Error("Erro ao listar históricos.");
-
-        // }))
-
 }
 
 

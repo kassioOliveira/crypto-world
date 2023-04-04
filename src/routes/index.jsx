@@ -6,7 +6,7 @@ import { Home } from '../pages/Home/Home';
 import { MenuLateral } from '../shared/components/MenuLateral/MenuLateral';
 
 import { useAppMenuContext } from '../shared/contexts/MenuContext';
-
+import { CurrencyDetails } from '../pages/CurrencyDetails/CurrencyDetails';
 
 export const AppRoutes = () => {
 
@@ -38,6 +38,8 @@ export const AppRoutes = () => {
             <Route path='/corretoras' element={<Exchanges />} />
 
             <Route path='/dashboard' element={<Dashboard />} />
+
+            <Route path='/cryptos/:id' element={<CurrencyDetails />} />
             <Route path='*' element={<Navigate to='/' />} />
         </Routes>
         </>

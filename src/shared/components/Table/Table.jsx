@@ -62,7 +62,7 @@ const Table = ({ isAssets, isExchanges, showPagination, data, titles, titleToRem
                 <TD>
 
                   {isAssets && !isExchanges && (
-                    <LinkToDetails to={`/details/${item.id}`}>
+                    <LinkToDetails to={`/cryptos/${item.id}`}>
 
 
                       <Logo src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`} />
@@ -73,7 +73,7 @@ const Table = ({ isAssets, isExchanges, showPagination, data, titles, titleToRem
                   )}
 
                   {!isAssets && isExchanges && (
-                    <LinkToDetails to={`/exchanges/${item.name}/details`}>
+                    <LinkToDetails to={`/corretoras/${item.name}/`}>
 
                       {formatString(item.name)}
 

@@ -22,8 +22,6 @@ export const DetailsOnTheMarket = ({data}) => {
     return str?.toString().charAt(0).toUpperCase() + str?.substr(1);
   }
 
-  console.log(data)
-
   const percent = parseFloat(data?.changePercent24Hr)?.toFixed(2);
   const isPositive = Math.sign(percent);
   
@@ -53,7 +51,7 @@ export const DetailsOnTheMarket = ({data}) => {
               {Number(data.priceUsd).toLocaleString(`pt-BR`)}
             </CurrencyPrice>
 
-            <ChangePercent24Hr color={{percent}}>
+            <ChangePercent24Hr c={{isPositive}}>
 
               {`${percent} %`}
               {

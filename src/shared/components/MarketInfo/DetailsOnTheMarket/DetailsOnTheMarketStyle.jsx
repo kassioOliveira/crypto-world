@@ -147,7 +147,7 @@ color:${({c}) => c &&  c.isPositive === 1 | 0 ? '#0ac00a': 'red'};
 `
 
 export const Rank = styled.div `
-    width:60px;
+    width:75px;
     height:60%;
     border-radius: 5px;
     background: #0ac00a;
