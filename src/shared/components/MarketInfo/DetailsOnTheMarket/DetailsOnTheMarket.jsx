@@ -17,12 +17,14 @@ export const DetailsOnTheMarket = ({data}) => {
   };
 
   const formatString = (str) => {
-    return str.toString().charAt(0).toUpperCase() + str.substr(1);
+  
+    return String(str).charAt(0).toUpperCase() + String(str).substr(1);
   }
 
   const percent = parseFloat(data.changePercent24Hr).toFixed(2);
   const isPositive = Math.sign(percent);
-  
+
+ 
   return (
 
       <DetailsOnTheMarketDetailsContainer>

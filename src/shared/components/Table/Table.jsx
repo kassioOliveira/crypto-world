@@ -73,7 +73,7 @@ const Table = ({ isAssets, isExchanges, showPagination, data, titles, titleToRem
                   )}
 
                   {!isAssets && isExchanges && (
-                    <LinkToDetails to={`/corretoras/${item.name}/`}>
+                    <LinkToDetails to={`/corretoras/${item.name}`}>
 
                       {formatString(item.name)}
 

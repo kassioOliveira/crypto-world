@@ -12,6 +12,7 @@ import {CurrencyDetail} from "../pages/CurrencyDetails/CurrencyDetail"
 import {ErrorBoundary} from "react-error-boundary"
 import { ErrorPage } from '../shared/components/Fallback/ErrorPage';
 import { ErrorPageNotFound } from '../shared/components/Fallback/ErrorPageNotFound';
+import { ExchangeDetails } from '../pages/ExchangeDetails/ExchangeDetails';
 export const AppRoutes = () => {
 
     const { handleMenuOptions } = useAppMenuContext();
@@ -43,9 +44,14 @@ export const AppRoutes = () => {
 
             <Route path='/dashboard' element={<ErrorBoundary fallback={<ErrorPage/>}><Dashboard /></ErrorBoundary>} />
 
-            <Route path='/cryptos/:id' element={<ErrorBoundary fallback={<ErrorBoundary/>}><CurrencyDetail/></ErrorBoundary>}/>
+            <Route path='/cryptos/:id' element={<ErrorBoundary fallback={<ErrorPage/>}><CurrencyDetail/></ErrorBoundary>}/>
+
+            <Route path='/corretoras/:id' element={<ErrorBoundary fallback={<ErrorPage/>}><ExchangeDetails/></ErrorBoundary>}/>
+            
             <Route path='*' element={<Navigate to='/notfound' />} />
+
             <Route path='/notfound' element={<ErrorPageNotFound/>} />
+
         </Routes>
         </>
 
