@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 export const ErrorContainer = styled.div`
 
     width:60%;
-    height:250px;
+    height: 150px;
+
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -17,10 +18,22 @@ export const ErrorContainer = styled.div`
     border-radius:5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-    @media (max-width:300px) {
+    @media (min-width:600px) {
+        width:40%;
     height: 150px;
-
 }
+
+@media (max-width:600px) {
+        width:60%;
+    height: 150px;
+}
+
+
+    @media (max-width:300px) {
+        width:60%;
+    height: 150px;
+}
+
 `
 
 export const ErrorSubContainer = styled.div`
@@ -33,6 +46,8 @@ align-items: center;
  margin: auto 0; 
  @media (max-width:300px) {
     height: 100%;
+    justify-content: center;
+    gap: 10px;
 }
 `
 

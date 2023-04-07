@@ -1,11 +1,13 @@
 import React from 'react'
 import { ErrorContainer, ErrorLink, ErrorSubContainer, ErrorSubTitle, ErrorTitle, SubMessage } from './ErrorStyle'
+import { LayoutBase } from '../../layouts/LayoutBase/Layout'
 
 export const ErrorPageNotFound = () => {
   return (
-    <ErrorContainer>
+   <LayoutBase>
+     <ErrorContainer>
         <ErrorSubContainer>
-            <ErrorTitle>Não encontrado</ErrorTitle>
+            <ErrorTitle>Não encontrada</ErrorTitle>
             <ErrorSubTitle>404</ErrorSubTitle>
             <ErrorLink to='/'>
             <SubMessage>
@@ -15,5 +17,6 @@ export const ErrorPageNotFound = () => {
 
         </ErrorSubContainer>
     </ErrorContainer>
+   </LayoutBase>
   )
 }

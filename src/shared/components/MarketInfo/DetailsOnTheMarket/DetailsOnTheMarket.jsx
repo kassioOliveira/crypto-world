@@ -17,7 +17,7 @@ export const DetailsOnTheMarket = ({data}) => {
   };
 
   const formatString = (str) => {
-    return str?.toString().charAt(0).toUpperCase() + str?.substr(1);
+    return str.toString().charAt(0).toUpperCase() + str.substr(1);
   }
 
   const percent = parseFloat(data.changePercent24Hr).toFixed(2);
