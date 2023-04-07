@@ -14,5 +14,9 @@ export const errorInterceptor = (error) => {
         return Promise.reject(new Error("Não encontrado."))
     }
 
+    if(error.response?.status === 500 || 501){
+        return Promise.reject(new Error("Parece que algo aconteceu do nosso lado. Tente novamente em breve."))
+    }
+
     return Promise.reject(error);
 };

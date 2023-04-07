@@ -46,14 +46,14 @@ const Table = ({ isAssets, isExchanges, showPagination, data, titles, titleToRem
 
       <THead>
         <TableRow w>
-          {width > 500 ? (titles?.map((item, index) => <TH w={item.w} key={index}>{item.title}</TH>)
+          {width > 500 ? (titles.map((item, index) => <TH w={item.w} key={index}>{item.title}</TH>)
           ) : (titles?.filter((t) => !titleToRemove.includes(t.title)).map((item, index) => <TH w={item.w} key={index}>{item.title}</TH>))}
         </TableRow>
       </THead>
       <TableBody>
         {
-          data && (
-            data?.map((item, index) => (
+        
+            data.sort((a,b) => a.rank - b.rank).map((item, index) => (
 
               <TableRow key={index}>
 
@@ -112,7 +112,7 @@ const Table = ({ isAssets, isExchanges, showPagination, data, titles, titleToRem
               </TableRow>
 
             ))
-          )
+          
         }
 
       </TableBody>

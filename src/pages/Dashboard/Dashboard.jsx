@@ -4,9 +4,12 @@ import { PainelGraficosContainer } from "../../shared/components/PainelGraficosC
 import { LayoutBase } from "../../shared/layouts/LayoutBase/Layout";
 import { AssetsService } from "../../shared/services/api/assets/AssetsService";
 import { TopMarket } from "../../shared/components/MarketInfo/TopMaket/TopMarket";
+import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
+import { ErrorPage } from "../../shared/components/Fallback/ErrorPage";
 
 export const Dashboard = () => {
 
+  const {showBoundary} = useErrorBoundary();
 
   const [topFive, setTopFive] = useState([]);
   
@@ -15,10 +18,10 @@ export const Dashboard = () => {
 
 
     AssetsService.getAll(0, 5).then(res => setTopFive(res.data))
-      .catch(err => alert(err.message))
+      .catch(err => showBoundary(err))
 
 
-  }, []);
+  }, [showBoundary]);
 
 
 
@@ -27,17 +30,10 @@ export const Dashboard = () => {
 
   return (
     <LayoutBase>
-      {
-        topFive && (
-          <>
-
-            <TopMarket data={topFive} />
+      <ErrorBoundary fallback={<ErrorPage/>}>
+           <TopMarket data={topFive} />
             <PainelGraficosContainer />
-
-          </>
-        )
-      }
-
+      </ErrorBoundary>
      
     </LayoutBase>
   )

@@ -7,13 +7,16 @@ import { AssetsService } from '../../services/api/assets/AssetsService';
 import { AreaChart } from '../Charts/AreaChart';
 import { BarChart } from '../Charts/BarChart';
 import { RadialBarChart } from '../Charts/RadialBarChart';
+import { useErrorBoundary } from 'react-error-boundary';
 
 
 export const PainelGraficosContainer = () => {
 
     
     const [data,Setdata] = useState([]);
-    const [topFive,setTopFive] = useState([])
+    const [topFive,setTopFive] = useState([]);
+
+    const {showBoundary} = useErrorBoundary();
 
 
 
@@ -42,16 +45,16 @@ export const PainelGraficosContainer = () => {
 
 
 
-         }).catch((error) => alert(error.message));
+         }).catch((error) => {
+          showBoundary(error)
+         });
         
 
     },[]);
 
 
   return (
-   <>
-   {
-    data && (
+  
       <PainelContainer>
       <Box>
       <AreaChart data={data}/>
@@ -70,10 +73,6 @@ export const PainelGraficosContainer = () => {
       </Box>
 
     </PainelContainer>
-    )
-   }
 
-
-   </>
   )
 }

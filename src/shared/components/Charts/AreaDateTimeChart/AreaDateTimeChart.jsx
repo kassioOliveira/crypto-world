@@ -22,7 +22,7 @@ export const AreaDateTimeChart = ({serie, logo}) => {
   
   const oneWeek = dates?.filter((item) => item >  new Date().getTime() -  8 * (24*60*60*1000) && item < new Date().getTime() -  (24*60*60*1000))
   
-  const oneYear = dates?.sort()
+  const oneYear = dates?.sort();
 
     let options2 = {
           
@@ -134,13 +134,11 @@ export const AreaDateTimeChart = ({serie, logo}) => {
           }
         },[serie]);
 
-
-   
   return (
      <DateTimeContainer>
       <DateTimeBox top h={"100px"}>
      {
-      logo && ( <DateTimeLogo src={`https://assets.coincap.io/assets/icons/${logo}@2x.png`}/> )
+      //logo && ( <DateTimeLogo src={`https://assets.coincap.io/assets/icons/${logo.toLowerCase()}@2x.png`}/> )
      }
         <ContainerButtons>
         <ButtonHistory onClick={() => updateData("one_week")}>

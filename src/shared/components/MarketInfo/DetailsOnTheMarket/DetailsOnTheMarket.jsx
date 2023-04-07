@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 import { ChangePercent24Hr, CurrencyPrice, DetailsBox, DetailsOnTheMarketDetailsContainer, DetailsSubBox, DetailsTitle, IconArrownDownDetails, IconArrownUpDetails, InnerContainerRank, InnerData, InnerTitle, LinkDetails, Rank, SubContainerPrice, SubContainerSubBox } from './DetailsOnTheMarketStyle'
 
 export const DetailsOnTheMarket = ({data}) => {
-
-
 
   const formatCash = (number) => {
     let n;
@@ -22,11 +20,12 @@ export const DetailsOnTheMarket = ({data}) => {
     return str?.toString().charAt(0).toUpperCase() + str?.substr(1);
   }
 
-  const percent = parseFloat(data?.changePercent24Hr)?.toFixed(2);
+  const percent = parseFloat(data.changePercent24Hr).toFixed(2);
   const isPositive = Math.sign(percent);
   
   return (
-    <DetailsOnTheMarketDetailsContainer>
+
+      <DetailsOnTheMarketDetailsContainer>
       <DetailsBox>
 
         <Rank>
@@ -107,5 +106,6 @@ export const DetailsOnTheMarket = ({data}) => {
         
       </DetailsBox>
     </DetailsOnTheMarketDetailsContainer>
+
   )
 }

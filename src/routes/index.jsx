@@ -1,13 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Dashboard } from '../pages/Dashboard/Dashboard';
 import { Exchanges } from '../pages/Exchanges/Exchanges';
 import { Home } from '../pages/Home/Home';
 import { MenuLateral } from '../shared/components/MenuLateral/MenuLateral';
 
-import { useAppMenuContext } from '../shared/contexts/MenuContext';
-import { CurrencyDetails } from '../pages/CurrencyDetails/CurrencyDetails';
 
+import { useAppMenuContext } from '../shared/contexts/MenuContext';
+import {CurrencyDetail} from "../pages/CurrencyDetails/CurrencyDetail"
+
+import {ErrorBoundary} from "react-error-boundary"
+import { ErrorPage } from '../shared/components/Fallback/ErrorPage';
+import { ErrorPageNotFound } from '../shared/components/Fallback/ErrorPageNotFound';
 export const AppRoutes = () => {
 
     const { handleMenuOptions } = useAppMenuContext();
@@ -33,14 +37,15 @@ export const AppRoutes = () => {
         <>
         <MenuLateral/>
            <Routes>
-            <Route path='/' element={<Home/>} />
+            <Route path='/' element={<ErrorBoundary fallback={<ErrorPage/>}><Home/></ErrorBoundary>} />
 
-            <Route path='/corretoras' element={<Exchanges />} />
+            <Route path='/corretoras' element={<ErrorBoundary fallback={<ErrorPage/>}><Exchanges /></ErrorBoundary>} />
 
-            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/dashboard' element={<ErrorBoundary fallback={<ErrorPage/>}><Dashboard /></ErrorBoundary>} />
 
-            <Route path='/cryptos/:id' element={<CurrencyDetails />} />
-            <Route path='*' element={<Navigate to='/' />} />
+            <Route path='/cryptos/:id' element={<ErrorBoundary fallback={<ErrorBoundary/>}><CurrencyDetail/></ErrorBoundary>}/>
+            <Route path='*' element={<Navigate to='/notfound' />} />
+            <Route path='/notfound' element={<ErrorPageNotFound/>} />
         </Routes>
         </>
 

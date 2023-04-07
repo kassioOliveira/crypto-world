@@ -3,8 +3,12 @@ import { GeralMarket } from '../../shared/components/MarketInfo/GeralMarket/Gera
 import Table from '../../shared/components/Table/Table'
 import { LayoutBase } from '../../shared/layouts/LayoutBase/Layout'
 import { ExchangesService } from '../../shared/services/api/exchanges/ExchangesService'
+import { ErrorBoundary, useErrorBoundary } from 'react-error-boundary'
+import { ErrorPage } from '../../shared/components/Fallback/ErrorPage'
 
 export const Exchanges = () => {
+
+    const { showBoundary} = useErrorBoundary();
 
     const [exchanges, setExchanges] = useState([]);
 
@@ -15,21 +19,18 @@ export const Exchanges = () => {
 
     useEffect(() => {
         ExchangesService.getAll().then(res => setExchanges(res.data))
-            .catch(err => alert(err.message))
-    }, []);
+            .catch(err => showBoundary(err))
+    }, [showBoundary]);
     
     return (
         <LayoutBase>
+            <ErrorBoundary fallback={<ErrorPage/>}>
             <GeralMarket />
-            {
-                exchanges && (
-                    <Table isExchanges data={exchanges.sort((a,b) => a.rank - b.rank)}
+                    <Table isExchanges data={exchanges}
                         columnsTitles={titles}
                         columnsNotToRemoveWhenResizing={titleColumnsRemoveResizing}
                         totalRecords={73} recordsPerPage={10} />
-
-                )
-            }
+            </ErrorBoundary>
         </LayoutBase>
     )
 }
